@@ -658,6 +658,7 @@ class ClientbotWrapperProtocol(IRCCommonProtocol):
             self.send(line)
 
         # Virtual endburst hook.
+        self.irc.maxnicklen = self.serverdata.get('maxnicklen', 30)
         self.connected.set()  # Note, this should always be set before the actual ENDBURST hook
         self.servers[source].has_eob = True
 
